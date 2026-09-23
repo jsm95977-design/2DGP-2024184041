@@ -14,18 +14,19 @@ def move_circle():
     
     global degree,theta, x, y
     
-for degree in range(360):
-    degree += 1
-    theta = math.radians(degree)
-    x = 200 * math.cos(theta)   
-    y = 200 * math.sin(theta)
+    for degree in range(360):
+        degree += 1
+        theta = math.radians(degree)
+        x = 200 * math.cos(theta)   
+        y = 200 * math.sin(theta)
 
 
-    print("circle")
-    clear_canvas()
-    character.draw(400 + x, 300 + y)
-    update_canvas()
-    delay(0.01)
+        print("circle")
+        clear_canvas()
+        character.draw(400 + x, 300 + y)
+        update_canvas()
+        delay(0.01)
+    degree = 0
     
 
 def  move_rectangle():
