@@ -18,7 +18,7 @@ def draw_character(x,y):
     delay(0.01)
 
 def move_circle():
-    return
+    
     global degree,theta, x, y
     
     for degree in range(360):
