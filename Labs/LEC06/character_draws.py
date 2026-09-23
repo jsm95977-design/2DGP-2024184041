@@ -89,7 +89,7 @@ def move_triangle():
     move_line(t_1, t_2) 
     move_line(t_2, t_3)  
     move_line(t_3, t_1)   
-    pass
+    
 
 while True:
     move_circle()
