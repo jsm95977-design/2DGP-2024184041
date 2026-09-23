@@ -48,8 +48,8 @@ def move_right():
 def move_top():
     global r_x, r_y
     print("3")
-    
-    draw_character(x,y)
+    for r_x in range(700, 400, -5):
+        draw_character(r_x,r_y)
     pass
 
 def move_left():
