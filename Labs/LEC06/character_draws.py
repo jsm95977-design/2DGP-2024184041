@@ -39,7 +39,6 @@ while True:
     move_circle()
     move_rectangle()
     move_triangle()
-    delay(10)
-    break
+    
 
 close_canvas()
