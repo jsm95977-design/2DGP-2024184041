@@ -24,8 +24,6 @@ def move_circle():
         x = 200 * math.cos(theta)   
         y = 200 * math.sin(theta)
 
-
-       
         draw_character(x+400, y+300)
     degree = 0
 
