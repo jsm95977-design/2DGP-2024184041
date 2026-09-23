@@ -6,14 +6,24 @@ character = load_image("character.png")
 
 degree = 0
 theta = math.radians(degree)
-
-x = 200 * math.cos(theta)
+x = 200 * math.cos(theta)   
 y = 200 * math.sin(theta)
 
+
 def move_circle():
+    
+    global degree,theta, x, y
+    
+
+    degree += 1
+    theta = math.radians(degree)
+    x = 200 * math.cos(theta)   
+    y = 200 * math.sin(theta)
+
+
     print("circle")
     clear_canvas()
-    character.draw(400, 300)
+    character.draw(x, y)
     update_canvas()
     pass
 
@@ -29,7 +39,7 @@ while True:
     move_circle()
     move_rectangle()
     move_triangle()
-    delay(1)
+    delay(10)
     break
 
 close_canvas()
