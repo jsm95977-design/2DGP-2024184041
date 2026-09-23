@@ -4,10 +4,8 @@ import math
 open_canvas(800, 600)
 character = load_image("character.png")
 
-degree = 0
+degree=0
 theta = math.radians(degree)
-x = 200 * math.cos(theta)   
-y = 200 * math.sin(theta)
 r_x = 400
 r_y = 300
 
@@ -61,8 +59,6 @@ def move_left():
 
 def  move_rectangle():
     
-    r_x=400
-    r_y=300
     move_bottom()
     move_right()
     move_top()
