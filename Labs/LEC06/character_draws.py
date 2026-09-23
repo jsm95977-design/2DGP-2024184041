@@ -4,6 +4,9 @@ import math
 open_canvas(800, 600)
 character = load_image("character.png")
 
+degree = 0
+theta = math.radians(degree)
+
 def move_circle():
     print("circle")
     clear_canvas()
