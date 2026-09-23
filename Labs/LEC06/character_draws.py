@@ -27,40 +27,40 @@ def move_circle():
         y = 200 * math.sin(theta)
 
 
-        print("circle")
+       
         draw_character(x+400, y+300)
     degree = 0
 
 def move_bottom():
     global r_x, r_y
-    print("1")
+    
     for r_x in range(400, 701, 5):
         draw_character(r_x,r_y)
-    pass
+    
 
 def move_right():
     global r_x, r_y
-    print("2")
+    
     for r_y in range(300, 501, 5):
         draw_character(r_x,r_y)
-    pass
+    
 
 def move_top():
     global r_x, r_y
-    print("3")
+    
     for r_x in range(700, 399, -5):
         draw_character(r_x,r_y)
-    pass
+    
 
 def move_left():
     global r_x, r_y
-    print("4")
+    
     for r_y in range(500, 299, -5):
         draw_character(r_x,r_y)
-    pass
+   
 
 def  move_rectangle():
-    print("rectangle")
+    
     r_x=400
     r_y=300
     move_bottom()
@@ -68,7 +68,7 @@ def  move_rectangle():
     move_top()
     move_left()
     delay(3)
-    pass
+    
 
 t_1 = (100,100)
 t_2 = (700,100)
@@ -85,7 +85,7 @@ def move_line(start, end):
         draw_character(x, y)
 
 def move_triangle():
-    print("triangle")
+    
     move_line(t_1, t_2) 
     move_line(t_2, t_3)  
     move_line(t_3, t_1)   
