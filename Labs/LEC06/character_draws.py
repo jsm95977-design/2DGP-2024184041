@@ -32,7 +32,8 @@ def move_circle():
 
 def move_bottom():
     print("1")
-    draw_character(x,y)
+    for x in range(400, 700, 5):
+        draw_character(x,y)
     pass
 
 def move_right():
@@ -42,6 +43,7 @@ def move_right():
 
 def move_top():
     print("3")
+    
     draw_character(x,y)
     pass
 
