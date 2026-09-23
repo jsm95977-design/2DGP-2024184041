@@ -55,13 +55,14 @@ def move_top():
 def move_left():
     global r_x, r_y
     print("4")
-    draw_character(x,y)
+    for r_y in range(500, 300, -5):
+        draw_character(r_x,r_y)
     pass
 
 def  move_rectangle():
     print("rectangle")
-    x=400
-    y=300
+    r_x=400
+    r_y=300
     move_bottom()
     move_right()
     move_top()
