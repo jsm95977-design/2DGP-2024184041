@@ -23,7 +23,7 @@ def move_circle():
 
     print("circle")
     clear_canvas()
-    character.draw(x, y)
+    character.draw(400 + x, 300 + y)
     update_canvas()
     pass
 
