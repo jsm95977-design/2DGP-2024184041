@@ -67,7 +67,7 @@ def  move_rectangle():
     move_right()
     move_top()
     move_left()
-    delay(3)
+    
     
 
 t_1 = (100,100)
