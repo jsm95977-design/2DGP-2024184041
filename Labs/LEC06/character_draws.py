@@ -11,7 +11,7 @@ y = 200 * math.sin(theta)
 
 
 def move_circle():
-    pass
+    return
     global degree,theta, x, y
     
     for degree in range(360):
@@ -28,7 +28,21 @@ def move_circle():
         delay(0.01)
     degree = 0
 
-    
+def move_bottom():
+    print("1")
+    pass
+
+def move_right():
+    print("2")
+    pass
+
+def move_top():
+    print("3")
+    pass
+
+def move_left():
+    print("4")
+    pass
 
 def  move_rectangle():
     print("rectangle")
@@ -36,6 +50,7 @@ def  move_rectangle():
     move_right()
     move_top()
     move_left()
+    delay(3)
     pass
 
 def move_triangle():
