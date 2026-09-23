@@ -9,6 +9,11 @@ theta = math.radians(degree)
 x = 200 * math.cos(theta)   
 y = 200 * math.sin(theta)
 
+def draw_character(x,y):
+    clear_canvas()
+    character.draw(x,y)
+    update_canvas()
+    delay(0.01)
 
 def move_circle():
     return
@@ -22,26 +27,27 @@ def move_circle():
 
 
         print("circle")
-        clear_canvas()
-        character.draw(400 + x, 300 + y)
-        update_canvas()
-        delay(0.01)
+        draw_character(x+400, y+300)
     degree = 0
 
 def move_bottom():
     print("1")
+    draw_character(x,y)
     pass
 
 def move_right():
     print("2")
+    draw_character(x,y)
     pass
 
 def move_top():
     print("3")
+    draw_character(x,y)
     pass
 
 def move_left():
     print("4")
+    draw_character(x,y)
     pass
 
 def  move_rectangle():
