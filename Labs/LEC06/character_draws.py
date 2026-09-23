@@ -7,6 +7,9 @@ character = load_image("character.png")
 degree = 0
 theta = math.radians(degree)
 
+x = 200 * math.cos(theta)
+y = 200 * math.sin(theta)
+
 def move_circle():
     print("circle")
     clear_canvas()
