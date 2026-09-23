@@ -14,7 +14,7 @@ def move_circle():
     
     global degree,theta, x, y
     
-
+for degree in range(360):
     degree += 1
     theta = math.radians(degree)
     x = 200 * math.cos(theta)   
