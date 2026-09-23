@@ -70,6 +70,10 @@ def  move_rectangle():
     delay(3)
     pass
 
+t_1 = (100,100)
+t_2 = (700,100)
+t_3 = (400,500)
+
 def move_triangle():
     print("triangle")
     pass
