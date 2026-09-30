@@ -49,6 +49,15 @@ def draw_frame(frame):
     update_canvas()
 
 
+def play_animation(frames):
+    for frame in frames:
+        handle_events()
+        if not running:
+            return
+        draw_frame(frame)
+        delay(FRAME_TIME)
+
+
 open_canvas(CANVAS_WIDTH, CANVAS_HEIGHT)
 
 sheet = load_image('ani_sheet.png')
@@ -61,12 +70,7 @@ animations = [
 running = True
 while running:
     for frames in animations:
-        for frame in frames:
-            handle_events()
-            if not running:
-                break
-            draw_frame(frame)
-            delay(FRAME_TIME)
+        play_animation(frames)
         if not running:
             break
 
