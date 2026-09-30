@@ -9,6 +9,10 @@ IDLE_FRAMES = [
     (2, 2, 37, 52), (41, 2, 37, 51), (80, 2, 37, 50), (119, 2, 37, 50),
     (158, 2, 37, 49), (197, 2, 37, 50), (236, 2, 37, 51), (275, 2, 37, 52),
 ]
+WALK_FRAMES = [
+    (2, 56, 46, 47), (50, 56, 46, 47), (98, 56, 46, 47), (146, 56, 46, 48),
+    (194, 56, 46, 48), (242, 56, 46, 47), (290, 56, 46, 48), (338, 56, 46, 48),
+]
 
 
 def to_pico2d(frame, sheet_height):
@@ -40,10 +44,11 @@ open_canvas(CANVAS_WIDTH, CANVAS_HEIGHT)
 
 sheet = load_image('ani_sheet.png')
 idle = [to_pico2d(frame, sheet.h) for frame in IDLE_FRAMES]
+walk = [to_pico2d(frame, sheet.h) for frame in WALK_FRAMES]
 
 running = True
 while running:
-    for frame in idle:
+    for frame in idle + walk:
         handle_events()
         if not running:
             break
