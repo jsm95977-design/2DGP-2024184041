@@ -15,15 +15,20 @@ def to_pico2d(frame, sheet_height):
     return left, sheet_height - top - height, width, height
 
 
+def draw_frame(frame):
+    left, bottom, width, height = frame
+    clear_canvas()
+    sheet.clip_draw(left, bottom, width, height, CANVAS_WIDTH // 2, CANVAS_HEIGHT // 2)
+    update_canvas()
+
+
 open_canvas(CANVAS_WIDTH, CANVAS_HEIGHT)
 
 sheet = load_image('ani_sheet.png')
 idle = [to_pico2d(frame, sheet.h) for frame in IDLE_FRAMES]
 
-for left, bottom, width, height in idle:
-    clear_canvas()
-    sheet.clip_draw(left, bottom, width, height, CANVAS_WIDTH // 2, CANVAS_HEIGHT // 2)
-    update_canvas()
+for frame in idle:
+    draw_frame(frame)
     delay(0.1)
 
 close_canvas()
