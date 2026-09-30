@@ -12,11 +12,10 @@ open_canvas(CANVAS_WIDTH, CANVAS_HEIGHT)
 
 sheet = load_image('ani_sheet.png')
 
-left, top, width, height = IDLE_FRAMES[0]
-clear_canvas()
-sheet.clip_draw(left, sheet.h - top - height, width, height, CANVAS_WIDTH // 2, CANVAS_HEIGHT // 2)
-update_canvas()
-
-delay(2)
+for left, top, width, height in IDLE_FRAMES:
+    clear_canvas()
+    sheet.clip_draw(left, sheet.h - top - height, width, height, CANVAS_WIDTH // 2, CANVAS_HEIGHT // 2)
+    update_canvas()
+    delay(0.1)
 
 close_canvas()
