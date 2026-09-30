@@ -3,6 +3,7 @@ from pico2d import *
 CANVAS_WIDTH, CANVAS_HEIGHT = 800, 600
 SCALE = 6  # 원본 프레임(약 50px)을 6배 확대 -> 화면 높이의 절반 이상
 GROUND_Y = 150  # 캐릭터 발이 닿는 바닥 높이
+FRAME_TIME = 0.1  # 한 프레임을 보여주는 시간(초)
 
 # 프레임 좌표 (left, top, width, height) - 이미지 편집기 기준 (위쪽이 y=0)
 IDLE_FRAMES = [
@@ -65,7 +66,7 @@ while running:
             if not running:
                 break
             draw_frame(frame)
-            delay(0.1)
+            delay(FRAME_TIME)
         if not running:
             break
 
