@@ -5,6 +5,7 @@ SCALE = 6  # 원본 프레임(약 50px)을 6배 확대 -> 화면 높이의 절�
 GROUND_Y = 150  # 캐릭터 발이 닿는 바닥 높이
 FRAME_TIME = 0.1  # 한 프레임을 보여주는 시간(초)
 REPEAT_COUNT = 5  # 애니메이션 하나를 반복하는 횟수
+PAUSE_TIME = 1.0  # 반복이 끝난 뒤 다음 애니메이션까지 정지 시간(초)
 
 # 프레임 좌표 (left, top, width, height) - 이미지 편집기 기준 (위쪽이 y=0)
 IDLE_FRAMES = [
@@ -75,6 +76,7 @@ while running:
             play_animation(frames)
             if not running:
                 break
+        delay(PAUSE_TIME)
         if not running:
             break
 
