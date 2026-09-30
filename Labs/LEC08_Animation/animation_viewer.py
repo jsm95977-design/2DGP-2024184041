@@ -51,18 +51,22 @@ def draw_frame(frame):
 open_canvas(CANVAS_WIDTH, CANVAS_HEIGHT)
 
 sheet = load_image('ani_sheet.png')
-idle = [to_pico2d(frame, sheet.h) for frame in IDLE_FRAMES]
-walk = [to_pico2d(frame, sheet.h) for frame in WALK_FRAMES]
-attack = [to_pico2d(frame, sheet.h) for frame in ATTACK_FRAMES]
-hit = [to_pico2d(frame, sheet.h) for frame in HIT_FRAMES]
+# 애니메이션마다 프레임 수가 달라도 리스트 길이만큼 재생하므로 그대로 동작한다
+animations = [
+    [to_pico2d(frame, sheet.h) for frame in frames]
+    for frames in (IDLE_FRAMES, WALK_FRAMES, ATTACK_FRAMES, HIT_FRAMES)
+]
 
 running = True
 while running:
-    for frame in idle + walk + attack + hit:
-        handle_events()
+    for frames in animations:
+        for frame in frames:
+            handle_events()
+            if not running:
+                break
+            draw_frame(frame)
+            delay(0.1)
         if not running:
             break
-        draw_frame(frame)
-        delay(0.1)
 
 close_canvas()
