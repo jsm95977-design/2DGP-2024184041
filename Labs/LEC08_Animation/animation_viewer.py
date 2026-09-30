@@ -41,6 +41,14 @@ def handle_events():
             running = False
 
 
+def wait(seconds):
+    # delay() 로 한 번에 멈추면 그동안 창을 닫을 수 없으므로 조금씩 나눠서 이벤트를 처리한다
+    end_time = get_time() + seconds
+    while running and get_time() < end_time:
+        handle_events()
+        delay(0.01)
+
+
 def draw_frame(frame):
     left, bottom, width, height = frame
     # 프레임마다 높이가 달라서 중심이 아니라 발(아래쪽)을 GROUND_Y 에 맞춘다
@@ -76,7 +84,7 @@ while running:
             play_animation(frames)
             if not running:
                 break
-        delay(PAUSE_TIME)
+        wait(PAUSE_TIME)
         if not running:
             break
 
