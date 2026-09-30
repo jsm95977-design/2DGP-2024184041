@@ -18,6 +18,9 @@ ATTACK_FRAMES = [
     (2, 106, 41, 53), (45, 106, 43, 53), (90, 106, 41, 53), (133, 106, 41, 53),
     (176, 106, 107, 69), (285, 106, 107, 69),
 ]
+HIT_FRAMES = [
+    (2, 177, 48, 53), (52, 177, 48, 56),
+]
 
 
 def to_pico2d(frame, sheet_height):
@@ -51,10 +54,11 @@ sheet = load_image('ani_sheet.png')
 idle = [to_pico2d(frame, sheet.h) for frame in IDLE_FRAMES]
 walk = [to_pico2d(frame, sheet.h) for frame in WALK_FRAMES]
 attack = [to_pico2d(frame, sheet.h) for frame in ATTACK_FRAMES]
+hit = [to_pico2d(frame, sheet.h) for frame in HIT_FRAMES]
 
 running = True
 while running:
-    for frame in idle + walk + attack:
+    for frame in idle + walk + attack + hit:
         handle_events()
         if not running:
             break
