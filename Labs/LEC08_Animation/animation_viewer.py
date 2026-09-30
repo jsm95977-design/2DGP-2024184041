@@ -17,6 +17,15 @@ def to_pico2d(frame, sheet_height):
     return left, sheet_height - top - height, width, height
 
 
+def handle_events():
+    global running
+    for event in get_events():
+        if event.type == SDL_QUIT:
+            running = False
+        elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
+            running = False
+
+
 def draw_frame(frame):
     left, bottom, width, height = frame
     # 프레임마다 높이가 달라서 중심이 아니라 발(아래쪽)을 GROUND_Y 에 맞춘다
@@ -32,8 +41,13 @@ open_canvas(CANVAS_WIDTH, CANVAS_HEIGHT)
 sheet = load_image('ani_sheet.png')
 idle = [to_pico2d(frame, sheet.h) for frame in IDLE_FRAMES]
 
-for frame in idle:
-    draw_frame(frame)
-    delay(0.1)
+running = True
+while running:
+    for frame in idle:
+        handle_events()
+        if not running:
+            break
+        draw_frame(frame)
+        delay(0.1)
 
 close_canvas()
