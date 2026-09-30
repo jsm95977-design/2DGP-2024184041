@@ -4,6 +4,7 @@ CANVAS_WIDTH, CANVAS_HEIGHT = 800, 600
 SCALE = 6  # 원본 프레임(약 50px)을 6배 확대 -> 화면 높이의 절반 이상
 GROUND_Y = 150  # 캐릭터 발이 닿는 바닥 높이
 FRAME_TIME = 0.1  # 한 프레임을 보여주는 시간(초)
+REPEAT_COUNT = 5  # 애니메이션 하나를 반복하는 횟수
 
 # 프레임 좌표 (left, top, width, height) - 이미지 편집기 기준 (위쪽이 y=0)
 IDLE_FRAMES = [
@@ -70,7 +71,10 @@ animations = [
 running = True
 while running:
     for frames in animations:
-        play_animation(frames)
+        for _ in range(REPEAT_COUNT):
+            play_animation(frames)
+            if not running:
+                break
         if not running:
             break
 
