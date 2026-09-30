@@ -2,6 +2,7 @@ from pico2d import *
 
 CANVAS_WIDTH, CANVAS_HEIGHT = 800, 600
 SCALE = 6  # 원본 프레임(약 50px)을 6배 확대 -> 화면 높이의 절반 이상
+GROUND_Y = 150  # 캐릭터 발이 닿는 바닥 높이
 
 # 프레임 좌표 (left, top, width, height) - 이미지 편집기 기준 (위쪽이 y=0)
 IDLE_FRAMES = [
@@ -18,9 +19,11 @@ def to_pico2d(frame, sheet_height):
 
 def draw_frame(frame):
     left, bottom, width, height = frame
+    # 프레임마다 높이가 달라서 중심이 아니라 발(아래쪽)을 GROUND_Y 에 맞춘다
+    draw_w, draw_h = width * SCALE, height * SCALE
     clear_canvas()
     sheet.clip_draw(left, bottom, width, height,
-                    CANVAS_WIDTH // 2, CANVAS_HEIGHT // 2, width * SCALE, height * SCALE)
+                    CANVAS_WIDTH // 2, GROUND_Y + draw_h // 2, draw_w, draw_h)
     update_canvas()
 
 
