@@ -61,11 +61,10 @@ def draw_frame(frame):
 
 def play_animation(frames):
     for frame in frames:
-        handle_events()
         if not running:
             return
         draw_frame(frame)
-        delay(FRAME_TIME)
+        wait(FRAME_TIME)
 
 
 open_canvas(CANVAS_WIDTH, CANVAS_HEIGHT)
