@@ -13,6 +13,11 @@ WALK_FRAMES = [
     (2, 56, 46, 47), (50, 56, 46, 47), (98, 56, 46, 47), (146, 56, 46, 48),
     (194, 56, 46, 48), (242, 56, 46, 47), (290, 56, 46, 48), (338, 56, 46, 48),
 ]
+# 공격 모션은 6프레임이고, 베기 이펙트가 있는 뒤 2프레임은 크기가 107x69 로 훨씬 크다
+ATTACK_FRAMES = [
+    (2, 106, 41, 53), (45, 106, 43, 53), (90, 106, 41, 53), (133, 106, 41, 53),
+    (176, 106, 107, 69), (285, 106, 107, 69),
+]
 
 
 def to_pico2d(frame, sheet_height):
@@ -45,10 +50,11 @@ open_canvas(CANVAS_WIDTH, CANVAS_HEIGHT)
 sheet = load_image('ani_sheet.png')
 idle = [to_pico2d(frame, sheet.h) for frame in IDLE_FRAMES]
 walk = [to_pico2d(frame, sheet.h) for frame in WALK_FRAMES]
+attack = [to_pico2d(frame, sheet.h) for frame in ATTACK_FRAMES]
 
 running = True
 while running:
-    for frame in idle + walk:
+    for frame in idle + walk + attack:
         handle_events()
         if not running:
             break
