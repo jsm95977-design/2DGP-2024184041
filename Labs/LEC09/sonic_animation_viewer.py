@@ -5,6 +5,8 @@ CENTER_X, CENTER_Y = CANVAS_WIDTH // 2, CANVAS_HEIGHT // 2
 SCALE = 4
 FRAME_TIME = 0.1
 REPEAT = 5
+REST_TIME = 1.0
+REST_FRAMES = round(REST_TIME / FRAME_TIME)
 
 # (동작 이름, bottom, height, [(left, width), ...])
 ACTIONS = [
@@ -48,20 +50,33 @@ def draw_frame(action_index, frame):
 
 
 def update():
-    global action_index, frame, loop_count
-    frame += 1
-    if frame == len(ACTIONS[action_index][3]):
-        frame = 0
+    global action_index, frame, loop_count, rest_left
+
+    # 휴식 중: 마지막 프레임을 그대로 두고 남은 휴식 시간만 줄인다
+    if rest_left > 0:
+        rest_left -= 1
+        if rest_left == 0:
+            if action_index < len(ACTIONS) - 1:
+                action_index += 1
+            frame = 0
+        return
+
+    if frame == len(ACTIONS[action_index][3]) - 1:
         loop_count += 1
-        if loop_count == REPEAT and action_index < len(ACTIONS) - 1:
-            action_index += 1
+        if loop_count == REPEAT:
             loop_count = 0
+            rest_left = REST_FRAMES
+            return
+        frame = 0
+    else:
+        frame += 1
 
 
 running = True
 action_index = 0
 frame = 0
 loop_count = 0
+rest_left = 0
 while running:
     handle_events()
     clear_canvas()
