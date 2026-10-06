@@ -22,8 +22,8 @@ running = True
 while running:
     handle_events()
     clear_canvas()
-    # 시트 로드 확인용: 시트 전체를 화면 중앙에 그린다
-    sonic.draw(CANVAS_WIDTH // 2, CANVAS_HEIGHT // 2)
+    # 대기 동작의 첫 프레임: left=1, bottom=447, width=29, height=39
+    sonic.clip_draw(1, 447, 29, 39, CANVAS_WIDTH // 2, CANVAS_HEIGHT // 2)
     update_canvas()
     delay(FRAME_TIME)
 
