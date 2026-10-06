@@ -27,6 +27,10 @@ ACTIONS = [
     ('action_c', 56, 43, [(6, 34), (49, 34), (96, 23), (125, 23)]),
 ]
 
+# 가장 큰 프레임이 화면 세로 중앙에 오도록 바닥선을 정한다
+MAX_HEIGHT = max(height for _, _, height, _ in ACTIONS)
+GROUND_Y = CENTER_Y - MAX_HEIGHT * SCALE / 2
+
 open_canvas(CANVAS_WIDTH, CANVAS_HEIGHT)
 
 sonic = load_image('sonic-sprite.png')
@@ -45,8 +49,10 @@ def handle_events():
 def draw_frame(action_index, frame):
     name, bottom, height, frames = ACTIONS[action_index]
     left, width = frames[frame]
+    # 높이가 달라도 발이 같은 바닥선에 오도록 아래쪽 기준으로 정렬
+    y = GROUND_Y + height * SCALE / 2
     sonic.clip_draw(left, bottom, width, height,
-                    CENTER_X, CENTER_Y, width * SCALE, height * SCALE)
+                    CENTER_X, y, width * SCALE, height * SCALE)
 
 
 def update():
