@@ -56,7 +56,7 @@ def draw():
     # 높이가 달라도 발이 같은 바닥선에 오도록 아래쪽 기준으로 정렬
     y = GROUND_Y + height * SCALE / 2
     sonic.clip_draw(left, bottom, width, height,
-                    CENTER_X, y, width * SCALE, height * SCALE)
+                    x, y, width * SCALE, height * SCALE)
 
 
 def update():
@@ -89,6 +89,7 @@ action_index = 0    # 재생 중인 동작
 frame = 0           # 동작 안에서의 프레임 번호
 loop_count = 0      # 현재 동작을 몇 번 재생했는지
 rest_left = 0       # 남은 휴식 프레임 수 (0이면 재생 중)
+x = CENTER_X        # 소닉의 화면 x 좌표
 
 while running:
     handle_events()
