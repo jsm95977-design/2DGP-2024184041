@@ -4,6 +4,7 @@ CANVAS_WIDTH, CANVAS_HEIGHT = 800, 600
 CENTER_X, CENTER_Y = CANVAS_WIDTH // 2, CANVAS_HEIGHT // 2
 SCALE = 4
 FRAME_TIME = 0.1
+REPEAT = 5
 
 # (동작 이름, bottom, height, [(left, width), ...])
 ACTIONS = [
@@ -47,11 +48,14 @@ def draw_frame(action_index, frame):
 
 
 def update():
-    global frame, loop_count
+    global action_index, frame, loop_count
     frame += 1
     if frame == len(ACTIONS[action_index][3]):
         frame = 0
         loop_count += 1
+        if loop_count == REPEAT and action_index < len(ACTIONS) - 1:
+            action_index += 1
+            loop_count = 0
 
 
 running = True
