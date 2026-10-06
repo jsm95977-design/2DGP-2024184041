@@ -39,6 +39,10 @@ ACTIONS = [
 MAX_HEIGHT = max(height for _, _, height, _, _ in ACTIONS)
 GROUND_Y = CENTER_Y - MAX_HEIGHT * SCALE / 2
 
+# 화면 밖 판정 여유: 가장 넓은 프레임의 절반
+MAX_WIDTH = max(width for *_, frames in ACTIONS for _, width in frames)
+MARGIN = MAX_WIDTH * SCALE / 2
+
 
 def handle_events():
     global running
@@ -72,6 +76,9 @@ def update():
 
     # 재생 중: 이동 동작이면 오른쪽으로 이동 (제자리 동작은 속도 0)
     x += ACTIONS[action_index][3]
+    # 오른쪽 밖으로 완전히 나가면 왼쪽 밖에서 다시 들어온다
+    if x > CANVAS_WIDTH + MARGIN:
+        x = -MARGIN
 
     if frame == len(ACTIONS[action_index][4]) - 1:
         loop_count += 1
