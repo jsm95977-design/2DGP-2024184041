@@ -56,8 +56,7 @@ def update():
     if rest_left > 0:
         rest_left -= 1
         if rest_left == 0:
-            if action_index < len(ACTIONS) - 1:
-                action_index += 1
+            action_index = (action_index + 1) % len(ACTIONS)
             frame = 0
         return
 
