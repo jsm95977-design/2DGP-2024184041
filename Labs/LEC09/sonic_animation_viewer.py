@@ -1,6 +1,8 @@
 from pico2d import *
 
 CANVAS_WIDTH, CANVAS_HEIGHT = 800, 600
+CENTER_X, CENTER_Y = CANVAS_WIDTH // 2, CANVAS_HEIGHT // 2
+SCALE = 4
 FRAME_TIME = 0.1
 
 open_canvas(CANVAS_WIDTH, CANVAS_HEIGHT)
@@ -27,9 +29,9 @@ running = True
 while running:
     handle_events()
     clear_canvas()
-    # 좌표 확인용: 대기 동작 11프레임을 한 줄로 나란히 그린다
-    for i, (left, width) in enumerate(IDLE_FRAMES):
-        sonic.clip_draw(left, IDLE_BOTTOM, width, IDLE_HEIGHT, 50 + i * 65, CANVAS_HEIGHT // 2)
+    left, width = IDLE_FRAMES[0]
+    sonic.clip_draw(left, IDLE_BOTTOM, width, IDLE_HEIGHT,
+                    CENTER_X, CENTER_Y, width * SCALE, IDLE_HEIGHT * SCALE)
     update_canvas()
     delay(FRAME_TIME)
 
