@@ -46,15 +46,24 @@ def draw_frame(action_index, frame):
                     CENTER_X, CENTER_Y, width * SCALE, height * SCALE)
 
 
+def update():
+    global frame, loop_count
+    frame += 1
+    if frame == len(ACTIONS[action_index][3]):
+        frame = 0
+        loop_count += 1
+
+
 running = True
 action_index = 0
 frame = 0
+loop_count = 0
 while running:
     handle_events()
     clear_canvas()
     draw_frame(action_index, frame)
     update_canvas()
-    frame = (frame + 1) % len(ACTIONS[action_index][3])
+    update()
     delay(FRAME_TIME)
 
 close_canvas()
