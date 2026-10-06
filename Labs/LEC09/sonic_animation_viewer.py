@@ -26,13 +26,15 @@ def handle_events():
 
 
 running = True
+frame = 0
 while running:
     handle_events()
     clear_canvas()
-    left, width = IDLE_FRAMES[0]
+    left, width = IDLE_FRAMES[frame]
     sonic.clip_draw(left, IDLE_BOTTOM, width, IDLE_HEIGHT,
                     CENTER_X, CENTER_Y, width * SCALE, IDLE_HEIGHT * SCALE)
     update_canvas()
+    frame = (frame + 1) % len(IDLE_FRAMES)
     delay(FRAME_TIME)
 
 close_canvas()
